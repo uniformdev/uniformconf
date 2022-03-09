@@ -21,7 +21,6 @@ export default function UniformConfApp({
     <UniformContext
       context={serverUniformContext ?? clientContext}
       outputType="standard"
-      trackRouteOnRender={true}
     >
       <Component {...pageProps} />
       {/* <EmbeddedContextDevTools
