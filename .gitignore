@@ -36,6 +36,3 @@ yarn-error.log*
 
 # wrangler
 wrangler.toml
-
-#npm
-.npmrc
