@@ -1,0 +1,11 @@
+[build]
+  command = 'npm run ci:build'
+  publish = '.next'
+
+[template]
+  incoming-hooks = ["Uniform"]
+
+[template.environment]
+  UNIFORM_PROJECT_ID='Uniform Project Id'
+  UNIFORM_API_KEY='Uniform API Key'
+  GA_UA_ID='Google Analytics ID (optional)'

@@ -1,0 +1,43 @@
+id: page
+name: Page
+icon: file-document
+parameters: []
+slots:
+  - id: header
+    name: Header
+    allowedComponents:
+      - header
+    inheritAllowedComponents: false
+  - id: content
+    name: content
+    allowedComponents:
+      - $test
+      - hero
+      - $personalization
+      - registrationForm
+      - talklist
+      - whyattend
+    inheritAllowedComponents: false
+  - id: footer
+    name: Footer
+    allowedComponents:
+      - footer
+    inheritAllowedComponents: false
+defaults:
+  type: page
+  slots:
+    footer:
+      - type: footer
+        parameters: {}
+    header:
+      - type: header
+        parameters: {}
+slugSettings:
+  unique: global
+  required: 'yes'
+  regularExpression: ''
+  regularExpressionMessage: ''
+titleParameter: ''
+canBeComposition: true
+created: '2022-03-09T01:57:44.546901+00:00'
+updated: '2022-03-09T01:57:44.546901+00:00'

@@ -1,0 +1,34 @@
+id: hero
+name: Hero
+icon: components
+parameters:
+  - id: title
+    name: Title
+    type: text
+    typeConfig:
+      required: true
+  - id: text
+    name: Text
+    type: text
+    typeConfig:
+      regex: ''
+      multiline: true
+      linesCount: '10'
+  - id: image
+    name: Image
+    type: text
+    typeConfig: null
+  - id: buttonText
+    name: Button Text
+    type: text
+    typeConfig:
+      required: false
+  - id: buttonLink
+    name: Button Link
+    type: text
+    typeConfig: null
+slots: []
+titleParameter: title
+canBeComposition: false
+created: '2022-03-09T01:57:44.512387+00:00'
+updated: '2022-03-09T01:57:44.512387+00:00'
