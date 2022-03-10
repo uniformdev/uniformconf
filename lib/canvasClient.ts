@@ -3,14 +3,14 @@ import getConfig from "next/config";
 
 const {
   serverRuntimeConfig: {
-    uniformApiKey,
+    apiKey,
     canvasApiHost,
     projectId,
   },
 } = getConfig();
 
 export const canvasClient = new CanvasClient({
-  apiKey: uniformApiKey,
+  apiKey: apiKey,
   apiHost: canvasApiHost,
   projectId: projectId,
 });
