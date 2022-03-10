@@ -299,36 +299,11 @@ composition:
           trackingEventName:
             type: text
             value: Home page talks
-      - type: whyattend
-        variant: whyattendleft
-        parameters:
-          text:
-            type: text
-            value: >-
-              This conference has something to offer developers and marketers
-              alike. From basics to advanced, learn more about:
-
-
-              1. Enterprise JAMstack Personalization
-
-              2. Uniform Personalization
-
-              3. Uniform DXP
-
-
-              Expand your knowledge on these subjects and engage with
-              professionals from all over the world.
-          image:
-            type: text
-            value: /images/crowd.jpg
-          title:
-            type: text
-            value: Why You Should Attend
       - type: $test
         slots:
           test:
             - type: whyattend
-              variant: whyattendleft
+              variant: whyattendright
               parameters:
                 text:
                   type: text
@@ -353,7 +328,7 @@ composition:
                   type: text
                   value: Why You Should Attend
             - type: whyattend
-              variant: whyattendright
+              variant: whyattendleft
               parameters:
                 text:
                   type: text
@@ -380,8 +355,8 @@ composition:
         parameters:
           test:
             type: testSelect
-            value: Why Attend Test
+            value: whyAttendTest
   parameters: {}
 created: '2022-03-09T01:58:55.39864+00:00'
-modified: '2022-03-09T18:58:45.939321+00:00'
+modified: '2022-03-10T21:58:05.837209+00:00'
 pattern: false
