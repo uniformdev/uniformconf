@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="mx-auto px-8">
         <div className="w-full flex flex-col md:flex-row py-4">
           <div className="flex-1 mb-6">
-            <Link href="/">
+            <Link prefetch={false} href="/">
               <a
                 aria-label="Uniform"
                 className="text-orange-600 no-underline hover:no-underline"

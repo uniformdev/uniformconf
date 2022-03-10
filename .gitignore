@@ -36,3 +36,5 @@ yarn-error.log*
 
 # wrangler
 wrangler.toml
+# Local Netlify folder
+.netlify

@@ -42,6 +42,8 @@
     "@uniformdev/context": "14.2.1-alpha.34",
     "@uniformdev/context-next": "14.2.1-alpha.34",
     "@uniformdev/context-react": "14.2.1-alpha.34",
+    "@uniformdev/context-edge": "14.2.1-alpha.34",
+    "@uniformdev/context-edge-vercel": "14.2.1-alpha.34",
     "analytics": "^0.7.5",
     "cookie": "^0.4.2",
     "next": "^12.1.0",

@@ -47,7 +47,7 @@ const Nav = () => {
     >
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center">
-          <Link href="/">
+          <Link prefetch={false} href="/">
             <a
               aria-label="home"
               className={

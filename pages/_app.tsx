@@ -20,7 +20,7 @@ export default function UniformConfApp({
   return (
     <UniformContext
       context={serverUniformContext ?? clientContext}
-      outputType="standard"
+      outputType="edge"
     >
       <Component {...pageProps} />
       {/* <EmbeddedContextDevTools

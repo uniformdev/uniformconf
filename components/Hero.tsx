@@ -34,7 +34,7 @@ export function Hero({
               dangerouslySetInnerHTML={{ __html: text }}
             />
             {buttonText ? (
-              <Link href={buttonLink}>
+              <Link prefetch={false} href={buttonLink ? buttonLink : "#"}>
                 <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">
                   {buttonText}
                 </button>
