@@ -22,7 +22,6 @@ export default function Home({
   preview: boolean;
   composition: RootComponentInstance;
 }) {
-  console.log({ preview });
   return (
     <>
       <Head>
