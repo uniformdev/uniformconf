@@ -9,7 +9,7 @@
     "build": "run-s context:manifest build:next",
     "build:next": "next build",
     "context:manifest": "uniform context manifest download --output ./lib/context/manifest.json",
-    "ci:build": "npm run pull:manifest && next build",
+    "ci:build": "npm run build",
     "pull": "run-s pull:canvas pull:context",
     "pull:canvas": "run-s pull:components pull:compositions",
     "pull:compositions": "uniform presentation composition pull ./data/canvas/compositions",
