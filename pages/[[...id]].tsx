@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";

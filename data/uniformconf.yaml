@@ -713,7 +713,7 @@ signals:
           cookieName: unfrmconf_registered
     dur: p
     description: ''
-    str: 50
+    str: 100
 enrichments:
   - id: '1'
     name: Profile
