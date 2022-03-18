@@ -17,13 +17,5 @@ export function createUniformContext(serverContext?: NextPageContext) {
     plugins: [enableContextDevTools()],
   });
 
-  context.events.on("personalizationResult", (result) => {
-    console.log("personalizationResult", { result });
-  });
-
-  context.events.on("testResult", (result) => {
-    console.log("Test result", { result });
-  });
-
   return context;
 }
