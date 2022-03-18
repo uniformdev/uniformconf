@@ -12,10 +12,7 @@ export default function UniformConfApp({
   serverUniformContext,
 }: UniformAppProps) {
   return (
-    <UniformContext
-      context={serverUniformContext ?? clientContext}
-      outputType="edge"
-    >
+    <UniformContext context={serverUniformContext ?? clientContext}>
       <Component {...pageProps} />
     </UniformContext>
   );
