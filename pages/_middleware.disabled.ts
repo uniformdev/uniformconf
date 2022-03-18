@@ -49,8 +49,5 @@
 //   });
 // }
 
-// faux middleware; remove this and uncomment the above code to enable
-// edge rendering (requires a paid Uniform account)
-export default async function middleware() {
-  return;
-}
+// remove this and uncomment the rest for edge middleware
+export {};
