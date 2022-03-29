@@ -19,6 +19,7 @@ class MyDocument extends Document {
   }
 
   render(): React.ReactElement {
+    const tagManagerSrc = `https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`
     return (
       <Html lang="en">
         <Head>
@@ -47,6 +48,19 @@ class MyDocument extends Document {
             content="UniformConf, a Uniform content demo site"
           />
         </Head>
+        <script async src={tagManagerSrc}></script>
+        <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+          `
+            }}
+          />
         <body className="leading-normal tracking-normal text-white gradient">
           <Main />
           <NextScript />

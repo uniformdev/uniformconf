@@ -6,6 +6,7 @@ import {
 import { NextCookieTransitionDataStore } from "@uniformdev/context-next";
 import { NextPageContext } from "next";
 import manifest from "./manifest.json";
+import { enableGoogleGtagAnalytics } from '@uniformdev/context-gtag';
 
 export function createUniformContext(serverContext?: NextPageContext) {
   const context = new Context({
@@ -14,7 +15,7 @@ export function createUniformContext(serverContext?: NextPageContext) {
     transitionStore: new NextCookieTransitionDataStore({
       serverContext,
     }),
-    plugins: [enableContextDevTools()],
+    plugins: [enableContextDevTools(), enableGoogleGtagAnalytics()]
   });
 
   return context;
