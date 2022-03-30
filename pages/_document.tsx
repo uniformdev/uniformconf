@@ -19,7 +19,12 @@ class MyDocument extends Document {
   }
 
   render(): React.ReactElement {
-    const tagManagerSrc = `https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`
+    let tagManagerSrc= '';
+    if (process.env.GA_TRACKING_ID)
+    {
+      tagManagerSrc = `https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`
+    }
+
     return (
       <Html lang="en">
         <Head>
