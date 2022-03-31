@@ -8,6 +8,13 @@ import Document, {
 } from "next/document";
 import { enableNextSsr } from "@uniformdev/context-next";
 import { createUniformContext } from "../lib/context/uniformContext";
+import getConfig from "next/config";
+
+const {
+  publicRuntimeConfig: {
+    gaTrackingId,
+  },
+} = getConfig();
 
 class MyDocument extends Document {
   static async getInitialProps(
@@ -20,9 +27,9 @@ class MyDocument extends Document {
 
   render(): React.ReactElement {
     let tagManagerSrc= '';
-    if (process.env.GA_TRACKING_ID)
+    if (gaTrackingId)
     {
-      tagManagerSrc = `https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`
+      tagManagerSrc = `https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`
     }
 
     return (
@@ -53,19 +60,23 @@ class MyDocument extends Document {
             content="UniformConf, a Uniform content demo site"
           />
         </Head>
-        <script async src={tagManagerSrc}></script>
-        <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.GA_TRACKING_ID}', {
-                page_path: window.location.pathname,
-              });
-          `
-            }}
-          />
+        {tagManagerSrc && (
+          <>
+            <script async src={tagManagerSrc}></script>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaTrackingId}', {
+                  page_path: window.location.pathname,
+                });
+                `
+              }}
+            />
+          </>
+        )}
         <body className="leading-normal tracking-normal text-white gradient">
           <Main />
           <NextScript />
