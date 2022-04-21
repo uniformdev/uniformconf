@@ -6,8 +6,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ### Configure environment variables
 
-- Copy .env.example to .env
-- Configure your Uniform project
+The project is already configured to use a sample Uniform project.
+Check out the [.env file](./.env) for instructions on how to use your own project instead.
 
 ### Install packages
 
