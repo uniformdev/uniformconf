@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+import useScrollPosition from "@react-hook/window-scroll";
 
 import NavMenu from "./NavMenu";
 import Logo from "./Logo";
@@ -31,10 +31,11 @@ const Nav = () => {
   const [submenuVisible, setSubmenuVisible] = useState(false);
   const [isScrolled, setScrolled] = useState(false);
   const { context } = useUniformContext();
+  const scrollPositionY = useScrollPosition();
 
-  useScrollPosition(({ currPos }) => {
-    setScrolled(currPos.y < 0);
-  });
+  useEffect(() => {
+    setScrolled(scrollPositionY > 0);
+  }, [scrollPositionY]);
 
   return (
     <nav
