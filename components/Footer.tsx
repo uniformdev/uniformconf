@@ -1,6 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import Logo from "./Logo";
+import { ToggleEmbeddedContextDevTools } from '@uniformdev/context-devtools';
+import getConfig from 'next/config';
+const { serverRuntimeConfig } = getConfig();
+const { projectId, apiKey, apiHost } = serverRuntimeConfig;
 
 const Footer = () => {
   return (
@@ -23,6 +27,13 @@ const Footer = () => {
           </p>
         </div>
       </div>
+      <ToggleEmbeddedContextDevTools
+        initialSettings={{
+          apiHost: apiHost,
+          apiKey: apiKey,
+          projectId: projectId,
+        }}
+      />
     </footer>
   );
 };
