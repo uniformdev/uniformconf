@@ -47,6 +47,8 @@
     "@uniformdev/canvas-react": "13.0.1-alpha.311",
     "@uniformdev/context": "13.0.1-alpha.311",
     "@uniformdev/context-devtools": "13.0.1-alpha.311",
+    "@uniformdev/context-edge": "13.0.1-alpha.311",
+    "@uniformdev/context-edge-vercel": "13.0.1-alpha.311",
     "@uniformdev/context-gtag": "13.0.1-alpha.311",
     "@uniformdev/context-next": "13.0.1-alpha.311",
     "@uniformdev/context-react": "13.0.1-alpha.311",
