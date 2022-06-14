@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import { parse } from "cookie";
+import Link from 'next/link';
 import { useUniformContext } from "@uniformdev/context-react";
 import { ComponentProps } from "@uniformdev/canvas-react";
-
 import Splitter from "./Splitter";
+
+declare global {
+  interface Window {
+    gtag: (
+      type: string,
+      name: string,
+      options?: Record<string, any>
+    ) => void | undefined;
+  }
+}
 
 export type RegisterProps = ComponentProps<{
   heading: string;
@@ -29,6 +39,7 @@ export function RegisterForm({
     context.update({
       cookies: parse(document.cookie),
     });
+    window.gtag?.('event', 'registration');
     setRegistered(true);
   };
   return (
@@ -54,12 +65,13 @@ export function RegisterForm({
               {registered ? (
                 <>
                   <p className="pb-16">{registeredText}</p>
-                  <a
-                    href="/"
-                    className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
-                  >
-                    Return Home
-                  </a>
+                  <Link href="/">
+                    <a
+                      className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
+                    >
+                      Return Home
+                    </a>
+                  </Link>
                 </>
               ) : (
                 <button
