@@ -8,4 +8,4 @@
 [template.environment]
   UNIFORM_PROJECT_ID='Uniform Project Id'
   UNIFORM_API_KEY='Uniform API Key'
-  GA_UA_ID='Google Analytics ID (optional)'
+  GA4_ID='Google Analytics 4 ID (optional)'

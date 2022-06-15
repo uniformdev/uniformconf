@@ -8,7 +8,7 @@ const nextConfig = {
     previewSecret: process.env.UNIFORM_PREVIEW_SECRET || 'uniformconf',
   },
   publicRuntimeConfig: {
-    gaTrackingId: process.env.GA_UA_ID,
+    gaTrackingId: process.env.GA4_ID,
     edgeEnabled: false,
   },
 };
