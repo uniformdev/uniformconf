@@ -24,7 +24,7 @@ export default function Home({
   return (
     <>
       <Head>
-        <title>UniformConf</title>
+        <title>{`UniformConf${composition?._name ? ` | ${composition?._name}` : ''}`}</title>
         <meta name="description" content="UniformConf"></meta>
       </Head>
       <div>
