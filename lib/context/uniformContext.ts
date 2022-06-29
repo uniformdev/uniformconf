@@ -22,7 +22,7 @@ export function createUniformContext(serverContext?: NextPageContext) {
   ];
 
   if (gaTrackingId) {
-    plugins.push(enableGoogleGtagAnalytics());
+    plugins.push(enableGoogleGtagAnalytics({ emitAll: true }));
   }
 
   const context = new Context({
