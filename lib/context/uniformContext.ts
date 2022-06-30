@@ -3,24 +3,26 @@ import {
   ManifestV2,
   enableContextDevTools,
   ContextPlugin,
+  enableDebugConsoleLogDrain,
 } from "@uniformdev/context";
 import { NextCookieTransitionDataStore } from "@uniformdev/context-next";
 import { NextPageContext } from "next";
 import manifest from "./manifest.json";
-import { enableGoogleGtagAnalytics } from '@uniformdev/context-gtag';
+import { enableGoogleGtagAnalytics } from "@uniformdev/context-gtag";
 import getConfig from "next/config";
 
 const {
-  publicRuntimeConfig: {
-    gaTrackingId,
-  },
+  publicRuntimeConfig: { gaTrackingId },
 } = getConfig();
 
 export function createUniformContext(serverContext?: NextPageContext) {
-  const plugins: ContextPlugin[] = [enableContextDevTools()];
+  const plugins: ContextPlugin[] = [
+    enableContextDevTools(),
+    enableDebugConsoleLogDrain("debug"),
+  ];
 
   if (gaTrackingId) {
-    plugins.push(enableGoogleGtagAnalytics());
+    plugins.push(enableGoogleGtagAnalytics({ emitAll: true }));
   }
 
   const context = new Context({
@@ -29,7 +31,7 @@ export function createUniformContext(serverContext?: NextPageContext) {
     transitionStore: new NextCookieTransitionDataStore({
       serverContext,
     }),
-    plugins: plugins
+    plugins: plugins,
   });
 
   return context;

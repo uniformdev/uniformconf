@@ -5,6 +5,7 @@ import useScrollPosition from "@react-hook/window-scroll";
 import NavMenu from "./NavMenu";
 import Logo from "./Logo";
 import { useUniformContext } from "@uniformdev/context-react";
+import { useRouter } from "next/router";
 
 const HamburgerIcon = () => (
   <svg
@@ -32,6 +33,13 @@ const Nav = () => {
   const [isScrolled, setScrolled] = useState(false);
   const { context } = useUniformContext();
   const scrollPositionY = useScrollPosition();
+  const router = useRouter();
+
+  useEffect(() => {
+    router.events.on("routeChangeStart", () => {
+      setSubmenuVisible(false);
+    });
+  }, []);
 
   useEffect(() => {
     setScrolled(scrollPositionY > 0);
@@ -80,6 +88,7 @@ const Nav = () => {
           <ActionLink
             isScrolled={isScrolled}
             onClick={async () => {
+              setSubmenuVisible(false);
               await context.forget(true);
               document.cookie =
                 "unfrmconf_registered=; Path=/; samesite=lax; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";

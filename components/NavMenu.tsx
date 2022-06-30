@@ -1,10 +1,12 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 const NavMenu = () => (
   <ul className="list-reset lg:flex justify-end flex-1 items-center space-x-2 lg:mr-4">
     <li>
       <Link prefetch={false} href="/">
-        <a className="inline-block py-2 px-4 text-black font-bold no-underline">Home</a>
+        <a className="inline-block py-2 px-4 text-black font-bold no-underline">
+          Home
+        </a>
       </Link>
     </li>
     <li>
