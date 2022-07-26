@@ -37,6 +37,3 @@ yarn-error.log*
 wrangler.toml
 # Local Netlify folder
 .netlify
-
-# context manifest
-lib/context/manifest.json
