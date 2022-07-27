@@ -39,7 +39,7 @@
     "package:context:quirks": "uniform context quirk pull ./data/uniformconf.yaml",
     "package:context:tests": "uniform context test pull ./data/uniformconf.yaml",
     "package:context": "run-s package:context:signals package:context:enrichments package:context:quirks package:context:tests package:context:aggregates",
-    "start:stackblitz": "npm install && next dev"
+    "start:stackblitz": "npm run dev:next"
   },
   "dependencies": {
     "@analytics/google-analytics": "^0.5.3",
