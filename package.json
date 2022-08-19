@@ -47,7 +47,7 @@
     "@uniformdev/canvas": "17.0.0",
     "@uniformdev/canvas-react": "17.0.0",
     "@uniformdev/context": "17.0.0",
-    "@uniformdev/context-devtools": "17.0.0",
+    "@uniformdev/context-devtools": "16.2.4",
     "@uniformdev/context-gtag": "17.0.0",
     "@uniformdev/context-next": "17.0.0",
     "@uniformdev/context-react": "17.0.0",
