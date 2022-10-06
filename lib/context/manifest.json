@@ -2,13 +2,6 @@
   "project": {
     "pz": {
       "agg": {
-        "submitCallForPapers": {
-          "inputs": [
-            {
-              "dim": "callForPapers"
-            }
-          ]
-        },
         "nonTechies": {
           "inputs": [
             {
@@ -22,13 +15,17 @@
               "dim": "1_dev"
             }
           ]
+        },
+        "submitCallForPapers": {
+          "inputs": [
+            {
+              "dim": "callForPapers"
+            }
+          ]
         }
       },
       "enr": {
         "1": {
-          "cap": 100
-        },
-        "interest": {
           "cap": 100
         }
       },
@@ -54,7 +51,7 @@
           }
         },
         "registrationComplete": {
-          "str": 100,
+          "str": 50,
           "cap": 100,
           "dur": "p",
           "crit": {
