@@ -51,7 +51,7 @@
           }
         },
         "registrationComplete": {
-          "str": 100,
+          "str": 50,
           "cap": 100,
           "dur": "p",
           "crit": {

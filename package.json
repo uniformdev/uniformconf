@@ -1,6 +1,10 @@
 {
   "name": "@uniformdev/uniformconf",
+<<<<<<< HEAD
   "version": "17.5.0",
+=======
+  "version": "17.3.0",
+>>>>>>> 46f29cb (Sitemap integration: data sync, sitemap.xml generation, ssg using sitemap api instead of composition api)
   "private": true,
   "license": "Apache-2.0",
   "scripts": {
@@ -21,6 +25,12 @@
     "push:context:quirks": "uniform context quirk push ./data/context/quirks",
     "push:context:tests": "uniform context test push ./data/context/tests",
     "push:context": "run-s push:context:signals push:context:enrichments push:context:quirks push:context:tests push:context:aggregates",
+    "push:sitemap:definitions": "uniform sitemap sitemap-definition push ./data/sitemap/sitemap-definitions",
+    "push:sitemap:nodes": "uniform sitemap sitemap-node push ./data/sitemap/sitemap-nodes",
+    "push:sitemap": "run-s push:sitemap:definitions push:sitemap:nodes",
+    "pull:sitemap:definitions": "uniform sitemap sitemap-definition pull ./data/sitemap/sitemap-definitions",
+    "pull:sitemap:nodes": "uniform sitemap sitemap-node pull ./data/sitemap/sitemap-nodes",
+    "pull:sitemap": "run-s pull:sitemap:definitions pull:sitemap:nodes",
     "pull:context:signals": "uniform context signal pull ./data/context/signals",
     "pull:context:enrichments": "uniform context enrichment pull ./data/context/enrichments",
     "pull:context:aggregates": "uniform context aggregate pull ./data/context/aggregates",
@@ -39,7 +49,8 @@
     "package:context:quirks": "uniform context quirk pull ./data/uniformconf.yaml",
     "package:context:tests": "uniform context test pull ./data/uniformconf.yaml",
     "package:context": "run-s package:context:signals package:context:enrichments package:context:quirks package:context:tests package:context:aggregates",
-    "start:stackblitz": "npm run dev:next"
+    "start:stackblitz": "npm run dev:next",
+    "sitemap:xml": "next-sitemap",
   },
   "dependencies": {
     "@analytics/google-analytics": "^0.5.3",

@@ -9,10 +9,19 @@ import {
 import { Composition, Slot } from "@uniformdev/canvas-react";
 import { canvasClient } from "lib/canvasClient";
 import { resolveRenderer } from "../components";
+import { sitemapClient } from "../lib/sitemapClient";
+import getConfig from "next/config";
 
 const PreviewDevPanel = dynamic(
   () => import("lib/preview/PreviewDevPanel/PreviewDevPanel")
 );
+
+const {
+  serverRuntimeConfig: {
+    projectId,
+    sitemapId,
+  },
+} = getConfig();
 
 export default function Home({
   composition,
@@ -43,15 +52,30 @@ export default function Home({
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const slug = context?.params?.id;
-  const slugString = Array.isArray(slug) ? slug.join("/") : slug;
+  const slugString = Array.isArray(slug) ? slug.join('/') : slug;
   const { preview } = context;
-  const { composition } = await canvasClient.getCompositionBySlug({
-    slug: slugString ? `/${slugString}` : "/",
+  // @todo fix after this one lands https://linear.app/uniform/issue/UNI-592/get-composition-data-based-on-sitemap-id-or-path
+  const { nodes } = await sitemapClient.fetchNodes({
+    path: slugString ? `/${slugString}` : '/',
+    projectId,
+    sitemapId,
+  });
+
+  if (!nodes?.[0].compositionId) {
+    return { notFound: true };
+  }
+
+  const { composition } = await canvasClient.getCompositionById({
+    compositionId: nodes?.[0].compositionId,
     state:
       process.env.NODE_ENV === "development" || preview
         ? CANVAS_DRAFT_STATE
         : CANVAS_PUBLISHED_STATE,
   });
+
+  if (!composition) {
+    return { notFound: true };
+  }
 
   return {
     props: {
@@ -62,17 +86,13 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const pages = await canvasClient.getCompositionList({
-    state:
-      process.env.NODE_ENV === "development"
-        ? CANVAS_DRAFT_STATE
-        : CANVAS_PUBLISHED_STATE,
+  const sitemapData = await sitemapClient.fetchNodes({
+    projectId,
+    sitemapId,
   });
 
   return {
-    paths: pages.compositions
-      .map((c) => c.composition._slug!)
-      .filter((slug) => slug),
-    fallback: true,
+    paths: sitemapData.nodes?.filter((node) => node.compositionId!).map((node) => node.path) ?? [],
+    fallback: false,
   };
 };

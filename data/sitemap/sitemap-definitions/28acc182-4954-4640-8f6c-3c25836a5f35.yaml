@@ -1,0 +1,5 @@
+id: 28acc182-4954-4640-8f6c-3c25836a5f35
+name: Default sitemap
+baseUrl: http://localhost:3000/
+default: true
+project_id: 58de3ad0-31f7-473e-a920-1a0429de6a0c
