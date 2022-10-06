@@ -37,3 +37,5 @@ yarn-error.log*
 wrangler.toml
 # Local Netlify folder
 .netlify
+
+package-lock.json
