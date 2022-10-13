@@ -2,6 +2,7 @@ id: page
 name: Page
 icon: file-document
 parameters: []
+useTeamPermissions: true
 slots:
   - id: header
     name: Header
@@ -37,7 +38,6 @@ slugSettings:
   required: 'yes'
   regularExpression: ''
   regularExpressionMessage: ''
-titleParameter: ''
 canBeComposition: true
-created: '2022-03-09T01:57:44.546901+00:00'
-updated: '2022-03-09T01:57:44.546901+00:00'
+created: '2022-10-28T13:25:36.151576+00:00'
+updated: '2022-10-28T13:25:36.151576+00:00'

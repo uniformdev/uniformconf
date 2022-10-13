@@ -1,4 +1,4 @@
-import { SitemapClient } from '@uniformdev/sitemap';
+import { ProjectMapClient } from '@uniformdev/project-map';
 import getConfig from "next/config";
 
 const {
@@ -8,7 +8,7 @@ const {
   },
 } = getConfig();
 
-export const sitemapClient = new SitemapClient({
+export const projectMapClient = new ProjectMapClient({
   apiKey,
   apiHost,
 });

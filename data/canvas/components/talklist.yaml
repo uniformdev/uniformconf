@@ -6,6 +6,7 @@ parameters:
     name: Title
     type: text
     typeConfig: null
+useTeamPermissions: true
 slots:
   - id: talks
     name: talks
@@ -16,5 +17,5 @@ slots:
     inheritAllowedComponents: false
 titleParameter: title
 canBeComposition: false
-created: '2022-03-09T01:57:44.515671+00:00'
-updated: '2022-03-09T02:03:53.994557+00:00'
+created: '2022-10-28T13:25:37.482136+00:00'
+updated: '2022-10-28T13:25:37.482136+00:00'

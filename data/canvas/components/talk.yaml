@@ -24,8 +24,9 @@ parameters:
         - text: marketers
           value: Marketers
       required: true
+useTeamPermissions: true
 slots: []
 titleParameter: title
 canBeComposition: false
-created: '2022-03-09T01:57:44.517624+00:00'
-updated: '2022-03-09T01:57:44.517624+00:00'
+created: '2022-10-28T13:25:36.153233+00:00'
+updated: '2022-10-28T13:25:36.153233+00:00'

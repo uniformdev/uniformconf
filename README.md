@@ -27,6 +27,13 @@ yarn dev
 
 Open <http://localhost:4120> with your browser to see the result.
 
+### Push predefined content to your empty Uniform Project
+```shell
+npm run push
+# or
+yarn push
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

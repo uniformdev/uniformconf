@@ -9,6 +9,13 @@
             }
           ]
         },
+        "nonTechies": {
+          "inputs": [
+            {
+              "dim": "1_mkt"
+            }
+          ]
+        },
         "submitCallForPapers": {
           "inputs": [
             {
@@ -51,7 +58,7 @@
           }
         },
         "registrationComplete": {
-          "str": 50,
+          "str": 100,
           "cap": 100,
           "dur": "p",
           "crit": {

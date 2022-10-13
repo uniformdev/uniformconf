@@ -1,8 +1,9 @@
 composition:
-  _id: 39a1d122-950b-4a1c-b245-ba0deb2c4a0d
-  type: page
   _name: Registration
+  _id: 39a1d122-950b-4a1c-b245-ba0deb2c4a0d
   _slug: /registration
+  type: page
+  parameters: {}
   slots:
     footer:
       - type: footer
@@ -22,7 +23,6 @@ composition:
           registeredText:
             type: text
             value: Thanks for registering for UniformConf! We'll see you there!
-  parameters: {}
-created: '2022-03-09T01:58:06.143069+00:00'
-modified: '2022-03-09T01:58:55.421481+00:00'
+created: '2022-10-25T12:50:04.938675+00:00'
+modified: '2022-10-25T12:50:04.938675+00:00'
 pattern: false

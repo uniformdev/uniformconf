@@ -9,7 +9,7 @@ import {
 import { Composition, Slot } from "@uniformdev/canvas-react";
 import { canvasClient } from "lib/canvasClient";
 import { resolveRenderer } from "../components";
-import { sitemapClient } from "../lib/sitemapClient";
+import { projectMapClient } from "../lib/projectMapClient";
 import getConfig from "next/config";
 
 const PreviewDevPanel = dynamic(
@@ -19,7 +19,7 @@ const PreviewDevPanel = dynamic(
 const {
   serverRuntimeConfig: {
     projectId,
-    sitemapId,
+    projectMapId,
   },
 } = getConfig();
 
@@ -54,19 +54,10 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const slug = context?.params?.id;
   const slugString = Array.isArray(slug) ? slug.join('/') : slug;
   const { preview } = context;
-  // @todo fix after this one lands https://linear.app/uniform/issue/UNI-592/get-composition-data-based-on-sitemap-id-or-path
-  const { nodes } = await sitemapClient.fetchNodes({
-    path: slugString ? `/${slugString}` : '/',
-    projectId,
-    sitemapId,
-  });
 
-  if (!nodes?.[0].compositionId) {
-    return { notFound: true };
-  }
-
-  const { composition } = await canvasClient.getCompositionById({
-    compositionId: nodes?.[0].compositionId,
+  const { composition } = await canvasClient.unstable_getCompositionByNodePath({
+    projectMapId,
+    projectMapNodePath: slugString ? `/${slugString}` : '/',
     state:
       process.env.NODE_ENV === "development" || preview
         ? CANVAS_DRAFT_STATE
@@ -86,13 +77,13 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const sitemapData = await sitemapClient.fetchNodes({
+  const { nodes } = await projectMapClient.getNodes({
     projectId,
-    sitemapId,
+    projectMapId,
   });
 
   return {
-    paths: sitemapData.nodes?.filter((node) => node.compositionId!).map((node) => node.path) ?? [],
+    paths: nodes?.filter((node) => node.compositionId!).map((node) => node.path) ?? [],
     fallback: false,
   };
 };

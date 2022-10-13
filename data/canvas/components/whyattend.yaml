@@ -17,11 +17,11 @@ parameters:
     name: Image
     type: text
     typeConfig: null
+useTeamPermissions: true
 slots: []
-titleParameter: ''
 canBeComposition: false
-created: '2022-03-09T01:57:44.539546+00:00'
-updated: '2022-03-09T01:57:44.539546+00:00'
+created: '2022-10-28T13:25:36.257496+00:00'
+updated: '2022-10-28T13:25:36.257496+00:00'
 variants:
   - id: whyattendleft
     name: WhyAttendLeft

@@ -27,8 +27,9 @@ parameters:
     name: Button Link
     type: text
     typeConfig: null
+useTeamPermissions: true
 slots: []
 titleParameter: title
 canBeComposition: false
-created: '2022-03-09T01:57:44.512387+00:00'
-updated: '2022-03-09T01:57:44.512387+00:00'
+created: '2022-10-28T13:25:36.295692+00:00'
+updated: '2022-10-28T13:25:36.295692+00:00'

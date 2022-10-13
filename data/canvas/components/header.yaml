@@ -2,8 +2,8 @@ id: header
 name: Header
 icon: border-top
 parameters: []
+useTeamPermissions: true
 slots: []
-titleParameter: null
 canBeComposition: false
-created: '2022-03-09T01:57:43.825112+00:00'
-updated: '2022-03-09T01:57:43.825112+00:00'
+created: '2022-10-28T13:25:37.451099+00:00'
+updated: '2022-10-28T13:25:37.451099+00:00'
