@@ -2,10 +2,10 @@
   "project": {
     "pz": {
       "agg": {
-        "techies": {
+        "nonTechies": {
           "inputs": [
             {
-              "dim": "1_dev"
+              "dim": "1_mkt"
             }
           ]
         },
@@ -16,10 +16,10 @@
             }
           ]
         },
-        "nonTechies": {
+        "techies": {
           "inputs": [
             {
-              "dim": "1_mkt"
+              "dim": "1_dev"
             }
           ]
         }
@@ -66,6 +66,26 @@
                   "rhs": "true"
                 },
                 "cookieName": "unfrmconf_registered"
+              }
+            ]
+          }
+        },
+        "sf": {
+          "str": 50,
+          "cap": 100,
+          "dur": "p",
+          "crit": {
+            "op": "&",
+            "type": "G",
+            "clauses": [
+              {
+                "key": "vc-city",
+                "type": "QK",
+                "match": {
+                  "cs": false,
+                  "op": "=",
+                  "rhs": "San Francisco"
+                }
               }
             ]
           }

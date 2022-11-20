@@ -11,6 +11,9 @@ const nextConfig = {
     gaTrackingId: process.env.GA4_ID,
     edgeEnabled: false,
   },
+  experimental: {
+    allowMiddlewareResponseBody: true,
+  },
 };
 
 module.exports = nextConfig;
