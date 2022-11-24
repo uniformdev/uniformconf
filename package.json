@@ -52,7 +52,7 @@
     "@uniformdev/context-next": "17.5.0",
     "@uniformdev/context-react": "17.5.0",
     "@uniformdev/project-map": "17.5.0",
-    "analytics": "^0.7.5",
+    "analytics": "^0.8.0",
     "cookie": "^0.4.2",
     "next": "^13.0.4",
     "nookies": "^2.5.2",
