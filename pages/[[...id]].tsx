@@ -6,7 +6,11 @@ import {
   CANVAS_DRAFT_STATE,
   CANVAS_PUBLISHED_STATE,
 } from "@uniformdev/canvas";
-import { Composition, Slot } from "@uniformdev/canvas-react";
+import {
+  Composition,
+  Slot,
+  useContextualEditing,
+} from "@uniformdev/canvas-react";
 import { canvasClient } from "lib/canvasClient";
 import { resolveRenderer } from "../components";
 
@@ -15,16 +19,22 @@ const PreviewDevPanel = dynamic(
 );
 
 export default function Home({
-  composition,
+  initialCompositionValue,
   preview,
 }: {
   preview: boolean;
-  composition: RootComponentInstance;
+  initialCompositionValue: RootComponentInstance;
 }) {
+  const { composition } = useContextualEditing({
+    initialCompositionValue,
+  });
+
   return (
     <>
       <Head>
-        <title>{`UniformConf${composition?._name ? ` | ${composition?._name}` : ''}`}</title>
+        <title>{`UniformConf${
+          composition?._name ? ` | ${composition?._name}` : ""
+        }`}</title>
         <meta name="description" content="UniformConf"></meta>
       </Head>
       <div>
@@ -55,7 +65,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   return {
     props: {
-      composition,
+      initialCompositionValue: composition,
       preview: Boolean(preview),
     },
   };
