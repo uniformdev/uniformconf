@@ -1,17 +1,14 @@
-import { GetStaticPaths, GetStaticPropsContext } from "next";
+import { GetStaticPropsContext } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import {
-  RootComponentInstance,
-  CANVAS_DRAFT_STATE,
-  CANVAS_PUBLISHED_STATE,
-} from "@uniformdev/canvas";
+import { RootComponentInstance } from "@uniformdev/canvas";
 import {
   Composition,
   Slot,
   useContextualEditing,
+  createApiEnhancer,
 } from "@uniformdev/canvas-react";
-import { canvasClient } from "lib/canvasClient";
+import { getCompositionBySlug, getCompositionPaths } from "lib/canvasClient";
 import { resolveRenderer } from "../components";
 
 const PreviewDevPanel = dynamic(
@@ -19,14 +16,17 @@ const PreviewDevPanel = dynamic(
 );
 
 export default function Home({
-  initialCompositionValue,
+  composition: initialCompositionValue,
   preview,
 }: {
   preview: boolean;
-  initialCompositionValue: RootComponentInstance;
+  composition: RootComponentInstance;
 }) {
   const { composition } = useContextualEditing({
     initialCompositionValue,
+    enhance: createApiEnhancer({
+      apiUrl: "/api/preview",
+    }),
   });
 
   return (
@@ -53,36 +53,25 @@ export default function Home({
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const slug = context?.params?.id;
-  const slugString = Array.isArray(slug) ? slug.join("/") : slug;
   const { preview } = context;
-  const { composition } = await canvasClient.getCompositionBySlug({
-    slug: slugString ? `/${slugString}` : "/",
-    state:
-      process.env.NODE_ENV === "development" || preview
-        ? CANVAS_DRAFT_STATE
-        : CANVAS_PUBLISHED_STATE,
-  });
+  const slugString = Array.isArray(slug) ? slug.join("/") : slug;
+  const slashedSlug = !slugString
+    ? "/"
+    : slugString.startsWith("/")
+    ? slugString
+    : `/${slugString}`;
+
+  const composition = await getCompositionBySlug(slashedSlug, Boolean(preview));
 
   return {
     props: {
-      initialCompositionValue: composition,
+      composition,
       preview: Boolean(preview),
     },
   };
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const pages = await canvasClient.getCompositionList({
-    state:
-      process.env.NODE_ENV === "development"
-        ? CANVAS_DRAFT_STATE
-        : CANVAS_PUBLISHED_STATE,
-  });
-
-  return {
-    paths: pages.compositions
-      .map((c) => c.composition._slug!)
-      .filter((slug) => slug),
-    fallback: true,
-  };
-};
+export async function getStaticPaths() {
+  const paths = await getCompositionPaths();
+  return { paths, fallback: true };
+}

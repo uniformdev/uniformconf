@@ -1,28 +1,9 @@
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import getConfig from 'next/config';
-import styles from './PreviewSwitch.module.scss';
-
-// lazy preview function that polls when next preview mode is on,
-// reloading static props every 2s. Need to update this to something that doesn't poll
-// (cross-domain iframe comms?)
-function usePreview(previewing: boolean) {
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!previewing) {
-      return;
-    }
-    const timer = setTimeout(async () => {
-      router.replace(router.asPath, undefined, { scroll: false });
-    }, 2000);
-    return () => clearTimeout(timer);
-  });
-}
+import { useRouter } from "next/router";
+import getConfig from "next/config";
+import styles from "./PreviewSwitch.module.scss";
 
 function PreviewSwitch({ previewing }: { previewing: boolean }) {
   const router = useRouter();
-  usePreview(previewing);
   const {
     serverRuntimeConfig: { previewSecret },
   } = getConfig();
@@ -31,18 +12,19 @@ function PreviewSwitch({ previewing }: { previewing: boolean }) {
       type="button"
       onClick={() => {
         const url = `/api/preview?slug=${router.asPath}${
-          previewing ? '&disable=1' : `&secret=${previewSecret}`
+          previewing ? "&disable=1" : `&secret=${previewSecret}`
         }`;
 
         router.push(url);
       }}
       className={[
-        styles['preview-switch-button'],
-        previewing ? styles['preview-switch-button-on'] : styles['preview-switch-button-off'],
-      ].join(' ')}
+        styles["preview-switch-button"],
+        previewing
+          ? styles["preview-switch-button-on"]
+          : styles["preview-switch-button-off"],
+      ].join(" ")}
     >
       {previewing ? <OnlineIcon /> : <OfflineIcon />}
-      {/* {previewing ? "Turn off preview" : "Turn preview on"} */}
     </button>
   );
 }
