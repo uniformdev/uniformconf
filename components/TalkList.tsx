@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentProps, Slot } from "@uniformdev/canvas-react";
+import { ComponentProps, UniformSlot } from "@uniformdev/canvas-react";
 
 export type TalkListProps = ComponentProps<{
   title: string;
@@ -14,13 +14,16 @@ function TalkList({ title }: TalkListProps) {
             className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800"
             dangerouslySetInnerHTML={{ __html: title }}
           />
-          <Slot name="talks">
+          <UniformSlot name="talks">
             {({ child, key }) => (
-              <div key={key} className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+              <div
+                key={key}
+                className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink"
+              >
                 {child}
               </div>
             )}
-          </Slot>
+          </UniformSlot>
         </div>
       </section>
     </fieldset>
