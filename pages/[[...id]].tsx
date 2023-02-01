@@ -40,7 +40,7 @@ export default function Home({
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: any) {
   const slug = context?.params?.id;
   const { preview } = context;
   const slugString = Array.isArray(slug) ? slug.join("/") : slug;
@@ -58,9 +58,4 @@ export async function getStaticProps(context: GetStaticPropsContext) {
       preview: Boolean(preview),
     },
   };
-}
-
-export async function getStaticPaths() {
-  const paths = await getCompositionPaths();
-  return { paths, fallback: true };
 }
