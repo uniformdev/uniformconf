@@ -1,22 +1,15 @@
-import { GetStaticPropsContext } from "next";
 import Head from "next/head";
-import dynamic from "next/dynamic";
 import { RootComponentInstance } from "@uniformdev/canvas";
 import {
   UniformComposition,
   UniformSlot,
   createUniformApiEnhancer,
 } from "@uniformdev/canvas-react";
-import { getCompositionBySlug, getCompositionPaths } from "lib/canvasClient";
+import { getCompositionBySlug } from "lib/canvasClient";
 import { resolveRenderer } from "../components";
-
-const PreviewDevPanel = dynamic(
-  () => import("lib/preview/PreviewDevPanel/PreviewDevPanel")
-);
 
 export default function Home({
   composition,
-  preview,
 }: {
   preview: boolean;
   composition: RootComponentInstance;
@@ -24,7 +17,6 @@ export default function Home({
   const contextualEditingEnhancer = createUniformApiEnhancer({
     apiUrl: "/api/preview",
   });
-
   return (
     <>
       <Head>
@@ -43,9 +35,6 @@ export default function Home({
           <UniformSlot name="content" />
           <UniformSlot name="footer" />
         </UniformComposition>
-        {preview && (
-          <PreviewDevPanel preview={preview} composition={composition} />
-        )}
       </div>
     </>
   );
