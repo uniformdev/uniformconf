@@ -54,7 +54,7 @@
     "@uniformdev/context-react": "18.2.2",
     "analytics": "^0.7.5",
     "cookie": "^0.4.2",
-    "next": "^13.1.2",
+    "next": "^13.1.6",
     "nookies": "^2.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
