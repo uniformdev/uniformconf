@@ -21,12 +21,16 @@ export const canvasClient = new CanvasClient({
   projectId,
 });
 
-export async function getCompositionBySlug(slug: string, preview: boolean) {
+export async function getCompositionBySlug(
+  slug: string,
+  preview: boolean,
+  token: any
+) {
   const { composition } = await canvasClient.getCompositionBySlug({
     slug,
     state: getState(preview),
   });
-  await runEnhancers(composition);
+  await runEnhancers(composition, token);
   return composition;
 }
 

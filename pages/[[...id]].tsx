@@ -7,6 +7,7 @@ import {
 } from "@uniformdev/canvas-react";
 import { getCompositionBySlug } from "lib/canvasClient";
 import { resolveRenderer } from "../components";
+import { getToken } from "next-auth/jwt";
 
 export default function Home({
   composition,
@@ -40,7 +41,7 @@ export default function Home({
   );
 }
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps({ context, req, res }: any) {
   const slug = context?.params?.id;
   const { preview } = context;
   const slugString = Array.isArray(slug) ? slug.join("/") : slug;
@@ -50,7 +51,14 @@ export async function getServerSideProps(context: any) {
     ? slugString
     : `/${slugString}`;
 
-  const composition = await getCompositionBySlug(slashedSlug, Boolean(preview));
+  const secret = process.env.NEXTAUTH_SECRET;
+  const token = await getToken({ req, secret });
+
+  const composition = await getCompositionBySlug(
+    slashedSlug,
+    Boolean(preview),
+    token
+  );
 
   return {
     props: {

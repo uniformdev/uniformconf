@@ -1,23 +1,44 @@
-// import { enhance, EnhancerBuilder, compose } from "@uniformdev/canvas";
+import { enhance, EnhancerBuilder } from "@uniformdev/canvas";
 
-// import {
-//   createCloudinaryEnhancer,
-//   CLOUDINARY_PARAMETER_TYPES,
-// } from "@uniformdev/canvas-cloudinary";
-// import { cloudinaryModelConverter } from "./converters/cloudinaryModelConverter";
-
-export default async function runEnhancers(composition: any) {
-  //const enhancers = new EnhancerBuilder();
-  // TODO: register your CMS specific enhancers here
-  // see docs: https://docs.uniform.app/canvas/tutorials/enhancers
-  // await enhance({
-  //   composition,
-  //   enhancers: new EnhancerBuilder().parameterType(
-  //     CLOUDINARY_PARAMETER_TYPES,
-  //     compose(createCloudinaryEnhancer(), cloudinaryModelConverter)
-  //   ),
-  //   context: {},
-  // });
-
+export default async function runEnhancers(composition: any, token: string) {
+  await enhance({
+    composition,
+    enhancers: getEnhancers(token),
+    context: { preview: true },
+  });
   return composition;
 }
+
+function getEnhancers(token: string) {
+  return new EnhancerBuilder().component("featuredProducts", (component: any) =>
+    component.parameterName("products", async (data: any) =>
+      sampleFetchEnhancer(data, token)
+    )
+  );
+}
+
+const sampleFetchEnhancer = async (data: any, token: string) => {
+  let response;
+  try {
+    response = await fetch("https://your-api-fetching-data", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    console.log("There was an error", error);
+    // returning original value
+    return data.parameter.value;
+  }
+
+  if (response?.ok) {
+    return await response.json();
+  } else {
+    console.log(`HTTP Response Code: ${response?.status}`);
+    // returning original value
+    return data.parameter.value;
+  }
+};
