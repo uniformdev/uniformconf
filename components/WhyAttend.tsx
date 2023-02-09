@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentProps } from "@uniformdev/canvas-react";
+import { ComponentProps, registerUniformComponent } from "@uniformdev/canvas-react";
 
 export const WhyAttendLoading = () => {
   return (
@@ -16,7 +16,7 @@ export type WhyAttendProps = ComponentProps<{
   image: string;
 }>;
 
-export const WhyAttend = ({
+const WhyAttend = ({
   title,
   text,
   image,
@@ -58,3 +58,10 @@ export const WhyAttend = ({
     </div>
   </section>
 );
+
+registerUniformComponent({
+  type: 'whyattend',
+  component: WhyAttend,
+});
+
+export default WhyAttend;

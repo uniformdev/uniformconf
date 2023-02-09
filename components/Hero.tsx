@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ComponentProps } from "@uniformdev/canvas-react";
+import { ComponentProps, registerUniformComponent } from "@uniformdev/canvas-react";
 import Splitter from "./Splitter";
 
 type HeroProps = ComponentProps<{
@@ -10,13 +10,13 @@ type HeroProps = ComponentProps<{
   image?: string;
 }>;
 
-export function Hero({
+const Hero = ({
   title,
   text,
   buttonText,
   image,
   buttonLink,
-}: HeroProps) {
+}: HeroProps) => {
   return (
     <>
       <div className="pt-24">
@@ -57,3 +57,10 @@ export function Hero({
     </>
   );
 }
+
+registerUniformComponent({
+  type: 'hero',
+  component: Hero,
+});
+
+export default Hero;

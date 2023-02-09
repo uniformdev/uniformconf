@@ -6,6 +6,7 @@ import NavMenu from "./NavMenu";
 import Logo from "./Logo";
 import { useUniformContext } from "@uniformdev/context-react";
 import { useRouter } from "next/router";
+import { registerUniformComponent } from "@uniformdev/canvas-react";
 
 const HamburgerIcon = () => (
   <svg
@@ -124,5 +125,10 @@ const ActionLink = ({ onClick, label, isScrolled, icon }: ActionLinkProps) => (
     </div>
   </button>
 );
+
+registerUniformComponent({
+  type: 'header',
+  component: Nav,
+})
 
 export default Nav;

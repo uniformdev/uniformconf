@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentProps, UniformSlot } from "@uniformdev/canvas-react";
+import { ComponentProps, registerUniformComponent, UniformSlot } from "@uniformdev/canvas-react";
 
 export type TalkListProps = ComponentProps<{
   title: string;
@@ -29,5 +29,10 @@ function TalkList({ title }: TalkListProps) {
     </fieldset>
   );
 }
+
+registerUniformComponent({
+  type: 'talklist',
+  component: TalkList,
+});
 
 export default TalkList;
