@@ -1,4 +1,3 @@
-import { GetStaticPropsContext } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { RootComponentInstance } from "@uniformdev/canvas";
@@ -7,18 +6,22 @@ import {
   UniformSlot,
   createUniformApiEnhancer,
 } from "@uniformdev/canvas-react";
-import { getCompositionBySlug, getCompositionPaths } from "lib/canvasClient";
+import { resolveRenderer } from "../components";
+import { withUniformGetStaticProps } from "@uniformdev/canvas-next/slug";
+export { getStaticPaths } from '@uniformdev/canvas-next/slug';
+
+export const getStaticProps = withUniformGetStaticProps(undefined, { param: 'id'});
 
 const PreviewDevPanel = dynamic(
   () => import("lib/preview/PreviewDevPanel/PreviewDevPanel")
 );
 
 export default function Home({
-  composition,
+  data: composition,
   preview,
 }: {
   preview: boolean;
-  composition: RootComponentInstance;
+  data: RootComponentInstance;
 }) {
   const contextualEditingEnhancer = createUniformApiEnhancer({
     apiUrl: "/api/preview",
@@ -35,6 +38,7 @@ export default function Home({
       <div>
         <UniformComposition
           data={composition}
+          resolveRenderer={resolveRenderer}
           contextualEditingEnhancer={contextualEditingEnhancer}
         >
           <UniformSlot name="header" />
@@ -47,29 +51,4 @@ export default function Home({
       </div>
     </>
   );
-}
-
-export async function getStaticProps(context: GetStaticPropsContext) {
-  const slug = context?.params?.id;
-  const { preview } = context;
-  const slugString = Array.isArray(slug) ? slug.join("/") : slug;
-  const slashedSlug = !slugString
-    ? "/"
-    : slugString.startsWith("/")
-    ? slugString
-    : `/${slugString}`;
-
-  const composition = await getCompositionBySlug(slashedSlug, Boolean(preview));
-
-  return {
-    props: {
-      composition,
-      preview: Boolean(preview),
-    },
-  };
-}
-
-export async function getStaticPaths() {
-  const paths = await getCompositionPaths();
-  return { paths, fallback: true };
 }
