@@ -10,7 +10,7 @@ import { resolveRenderer } from "../components";
 import { withUniformGetStaticProps } from "@uniformdev/canvas-next/slug";
 export { getStaticPaths } from '@uniformdev/canvas-next/slug';
 
-export const getStaticProps = withUniformGetStaticProps(undefined, { param: 'id'});
+export const getStaticProps = withUniformGetStaticProps({ param: 'id' });
 
 const PreviewDevPanel = dynamic(
   () => import("lib/preview/PreviewDevPanel/PreviewDevPanel")
