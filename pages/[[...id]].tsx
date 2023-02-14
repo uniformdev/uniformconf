@@ -8,7 +8,6 @@ import {
   createUniformApiEnhancer,
 } from "@uniformdev/canvas-react";
 import { getCompositionBySlug, getCompositionPaths } from "lib/canvasClient";
-import { resolveRenderer } from "../components";
 
 const PreviewDevPanel = dynamic(
   () => import("lib/preview/PreviewDevPanel/PreviewDevPanel")
@@ -36,7 +35,6 @@ export default function Home({
       <div>
         <UniformComposition
           data={composition}
-          resolveRenderer={resolveRenderer}
           contextualEditingEnhancer={contextualEditingEnhancer}
         >
           <UniformSlot name="header" />
