@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import useScrollPosition from "@react-hook/window-scroll";
-
-import NavMenu from "./NavMenu";
-import Logo from "./Logo";
-import { useUniformContext } from "@uniformdev/context-react";
 import { useRouter } from "next/router";
+import useScrollPosition from "@react-hook/window-scroll";
 import { registerUniformComponent } from "@uniformdev/canvas-react";
+import { useUniformContext } from "@uniformdev/context-react";
+
+import NavMenu from "../atoms/NavMenu";
+import Logo from "../atoms/Logo";
 
 const HamburgerIcon = () => (
   <svg
@@ -29,7 +29,7 @@ const LockIcon = () => (
   </svg>
 );
 
-const Nav = () => {
+const Header = () => {
   const [submenuVisible, setSubmenuVisible] = useState(false);
   const [isScrolled, setScrolled] = useState(false);
   const { context } = useUniformContext();
@@ -127,8 +127,8 @@ const ActionLink = ({ onClick, label, isScrolled, icon }: ActionLinkProps) => (
 );
 
 registerUniformComponent({
-  type: 'header',
-  component: Nav,
-})
+  type: "header",
+  component: Header,
+});
 
-export default Nav;
+export default Header;

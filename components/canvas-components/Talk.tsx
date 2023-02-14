@@ -1,4 +1,7 @@
-import { ComponentProps } from "@uniformdev/canvas-react";
+import {
+  registerUniformComponent,
+  ComponentProps,
+} from "@uniformdev/canvas-react";
 
 export type TalkProps = ComponentProps<{
   title: string;
@@ -45,3 +48,8 @@ const AudienceLabel: React.FC<AudienceLabelProps> = ({ audienceName }) => (
     {audienceName}
   </span>
 );
+
+registerUniformComponent({
+  type: "talk",
+  component: Talk,
+});
