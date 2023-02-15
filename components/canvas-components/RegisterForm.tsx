@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { parse } from "cookie";
 import Link from "next/link";
 import { useUniformContext } from "@uniformdev/context-react";
-import { ComponentProps, registerUniformComponent } from "@uniformdev/canvas-react";
-import Splitter from "./Splitter";
+import {
+  registerUniformComponent,
+  ComponentProps,
+} from "@uniformdev/canvas-react";
+import Splitter from "../atoms/Splitter";
 
 declare global {
   interface Window {
@@ -21,11 +24,11 @@ export type RegisterProps = ComponentProps<{
   buttonText: string;
 }>;
 
-const RegisterForm = ({
+export function RegisterForm({
   heading,
   registeredText,
   buttonText,
-}: RegisterProps) => {
+}: RegisterProps) {
   const [registered, setRegistered] = useState(
     typeof document !== "undefined"
       ? !!document.cookie.match(/unfrmconf_registered/)
@@ -91,8 +94,6 @@ const RegisterForm = ({
 }
 
 registerUniformComponent({
-  type: 'registrationForm',
+  type: "registrationForm",
   component: RegisterForm,
 });
-
-export default RegisterForm;
