@@ -1,8 +1,9 @@
+import { GetStaticPropsContext } from "next";
 import getConfig from "next/config";
 import { createPreviewHandler } from "@uniformdev/canvas-next";
-import runEnhancers from "lib/enhancers/enhancers";
+import runEnhancers from "@/lib/enhancers";
 
-const context = {
+const context: GetStaticPropsContext = {
   preview: true,
 };
 

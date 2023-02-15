@@ -1,10 +1,39 @@
-import { withUniformGetStaticProps, withUniformGetStaticPaths } from "@uniformdev/canvas-next/slug";
+import {
+  withUniformGetStaticProps,
+  withUniformGetStaticPaths,
+} from "@uniformdev/canvas-next/slug";
 import MainContainer from "@/components/MainContainer";
+import runEnhancers from "@/lib/enhancers";
+
+export const getStaticProps = withUniformGetStaticProps({
+  param: "id",
+  preview: process.env.NODE_ENV === "development",
+  callback: async (context, composition) => {
+    if (composition) {
+      await runEnhancers(composition, context);
+    } else {
+      return {
+        notFound: true,
+      };
+    }
+    return {
+      // Enhanced composition data will be injected later, so no need to do it yourself
+      props: {},
+      // Specifying some NextJS ISG params per page.
+      // revalidate: 100,
+    };
+  },
+});
+
+export const getStaticPaths = withUniformGetStaticPaths({
+  preview: process.env.NODE_ENV === "development",
+});
 
 export default MainContainer;
 
-export const getStaticProps = withUniformGetStaticProps({ param: "id" });
-
+// ===========================================================================
+// Low- level implementation of getStaticProps without the canvas-next helpers
+// ===========================================================================
 // const getStaticProps = async (context: GetStaticPropsContext) => {
 //   const canvasClient = new CanvasClient({
 //     apiKey: process.env.UNIFORM_API_KEY,
@@ -37,8 +66,9 @@ export const getStaticProps = withUniformGetStaticProps({ param: "id" });
 // }
 
 
-export const getStaticPaths = withUniformGetStaticPaths();
-
+// ===========================================================================
+// Low- level implementation of getStaticPaths without the canvas-next helpers
+// ===========================================================================
 // const getStaticPaths = async () => {
 //   const canvasClient = new CanvasClient({
 //     apiKey: process.env.UNIFORM_API_KEY,
