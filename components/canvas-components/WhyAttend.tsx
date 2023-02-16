@@ -64,5 +64,12 @@ export const WhyAttend = ({
 
 registerUniformComponent({
   type: "whyattend",
+  variantId: 'whyattendleft',
+  component: WhyAttend,
+});
+
+registerUniformComponent({
+  type: "whyattend",
+  variantId: 'whyattendright',
   component: WhyAttend,
 });

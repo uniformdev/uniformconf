@@ -3,20 +3,20 @@ components:
     name: Footer
     icon: border-bottom
     parameters: []
+    useTeamPermissions: true
     slots: []
-    titleParameter: null
     canBeComposition: false
-    created: '2022-03-09T01:57:44.563245+00:00'
-    updated: '2022-03-09T01:57:44.563245+00:00'
+    created: '2023-02-16T15:12:05.511356+00:00'
+    updated: '2023-02-16T15:12:05.511356+00:00'
   - id: header
     name: Header
     icon: border-top
     parameters: []
+    useTeamPermissions: true
     slots: []
-    titleParameter: null
     canBeComposition: false
-    created: '2022-03-09T01:57:43.825112+00:00'
-    updated: '2022-03-09T01:57:43.825112+00:00'
+    created: '2023-02-16T15:12:05.470419+00:00'
+    updated: '2023-02-16T15:12:05.470419+00:00'
   - id: hero
     name: Hero
     icon: components
@@ -46,15 +46,17 @@ components:
         name: Button Link
         type: text
         typeConfig: null
+    useTeamPermissions: true
     slots: []
     titleParameter: title
     canBeComposition: false
-    created: '2022-03-09T01:57:44.512387+00:00'
-    updated: '2022-03-09T01:57:44.512387+00:00'
+    created: '2023-02-16T15:12:05.222506+00:00'
+    updated: '2023-02-16T15:12:05.222506+00:00'
   - id: page
     name: Page
     icon: file-document
     parameters: []
+    useTeamPermissions: true
     slots:
       - id: header
         name: Header
@@ -90,10 +92,9 @@ components:
       required: 'yes'
       regularExpression: ''
       regularExpressionMessage: ''
-    titleParameter: ''
     canBeComposition: true
-    created: '2022-03-09T01:57:44.546901+00:00'
-    updated: '2022-03-09T01:57:44.546901+00:00'
+    created: '2023-02-16T15:12:06.768178+00:00'
+    updated: '2023-02-16T15:12:06.768178+00:00'
   - id: registrationForm
     name: Registration Form
     icon: format-indent-increase
@@ -113,11 +114,12 @@ components:
         type: text
         typeConfig:
           required: true
+    useTeamPermissions: true
     slots: []
     titleParameter: heading
     canBeComposition: false
-    created: '2022-03-09T01:57:44.561151+00:00'
-    updated: '2022-03-09T01:57:44.561151+00:00'
+    created: '2023-02-16T15:12:05.484933+00:00'
+    updated: '2023-02-16T15:12:05.484933+00:00'
   - id: talk
     name: Talk
     icon: add-r
@@ -144,11 +146,12 @@ components:
             - text: marketers
               value: Marketers
           required: true
+    useTeamPermissions: true
     slots: []
     titleParameter: title
     canBeComposition: false
-    created: '2022-03-09T01:57:44.517624+00:00'
-    updated: '2022-03-09T01:57:44.517624+00:00'
+    created: '2023-02-16T15:12:05.996076+00:00'
+    updated: '2023-02-16T15:12:05.996076+00:00'
   - id: talklist
     name: Talklist
     icon: mic
@@ -157,6 +160,7 @@ components:
         name: Title
         type: text
         typeConfig: null
+    useTeamPermissions: true
     slots:
       - id: talks
         name: talks
@@ -167,8 +171,8 @@ components:
         inheritAllowedComponents: false
     titleParameter: title
     canBeComposition: false
-    created: '2022-03-09T01:57:44.515671+00:00'
-    updated: '2022-03-09T02:03:53.994557+00:00'
+    created: '2023-02-16T15:12:05.897168+00:00'
+    updated: '2023-02-16T15:12:05.897168+00:00'
   - id: whyattend
     name: Why Attend
     icon: yinyang
@@ -188,11 +192,11 @@ components:
         name: Image
         type: text
         typeConfig: null
+    useTeamPermissions: true
     slots: []
-    titleParameter: ''
     canBeComposition: false
-    created: '2022-03-09T01:57:44.539546+00:00'
-    updated: '2022-03-09T01:57:44.539546+00:00'
+    created: '2023-02-16T15:12:05.508909+00:00'
+    updated: '2023-02-16T15:12:05.508909+00:00'
     variants:
       - id: whyattendleft
         name: WhyAttendLeft
@@ -752,3 +756,44 @@ aggregates:
     inputs:
       - dim: 1_dev
         sign: +
+projectMaps:
+  - id: 75b7df37-080e-4ecc-913f-ba16392ed8eb
+    name: Marketing Site (Starter)'s Project Map
+    default: true
+projectMapNodes:
+  - id: 44a64561-14d4-4815-8630-8b713baa5223
+    name: Home
+    type: composition
+    data: {}
+    order: 500
+    path: /
+    compositionId: ecf48923-00c6-4d2b-8493-b1e0895d2807
+    pathSegment: ''
+    projectMapId: 75b7df37-080e-4ecc-913f-ba16392ed8eb
+  - id: d028c084-835a-49dc-bcc8-b6508b65fd3e
+    name: Registration
+    type: composition
+    data: {}
+    order: 500
+    path: /registration
+    compositionId: 39a1d122-950b-4a1c-b245-ba0deb2c4a0d
+    pathSegment: registration
+    projectMapId: 75b7df37-080e-4ecc-913f-ba16392ed8eb
+  - id: d5b1be16-f4f7-429a-b189-b1720b6076fe
+    name: For Marketers
+    type: composition
+    data: {}
+    order: 500
+    path: /marketers
+    compositionId: 00bd4d8b-0929-4150-ae56-a22e0fe44c9f
+    pathSegment: marketers
+    projectMapId: 75b7df37-080e-4ecc-913f-ba16392ed8eb
+  - id: f7d1d463-8286-44d9-ba58-6be65cf9d8aa
+    name: For Developers
+    type: composition
+    data: {}
+    order: 500
+    path: /developers
+    compositionId: ae563e0f-cda2-4ef7-94d7-9ef5b640759b
+    pathSegment: developers
+    projectMapId: 75b7df37-080e-4ecc-913f-ba16392ed8eb

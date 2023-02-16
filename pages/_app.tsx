@@ -1,7 +1,7 @@
 import { UniformContext } from "@uniformdev/context-react";
 import { UniformAppProps } from "@uniformdev/context-next";
 import { createUniformContext } from "../lib/context/uniformContext";
-import '../components/canvasComponents';
+import '../components/canvas-components';
 import "../styles/style.css";
 
 const clientContext = createUniformContext();
