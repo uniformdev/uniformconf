@@ -1,12 +1,9 @@
 import { useRouter } from "next/router";
-import getConfig from "next/config";
 import styles from "./PreviewSwitch.module.scss";
 
 function PreviewSwitch({ previewing }: { previewing: boolean }) {
   const router = useRouter();
-  const {
-    serverRuntimeConfig: { previewSecret },
-  } = getConfig();
+  const previewSecret = process.env.UNIFORM_PREVIEW_SECRET || 'uniformconf';
   return (
     <button
       type="button"

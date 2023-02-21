@@ -9,11 +9,6 @@ import { NextCookieTransitionDataStore } from "@uniformdev/context-next";
 import { NextPageContext } from "next";
 import manifest from "./manifest.json";
 import { enableGoogleGtagAnalytics } from "@uniformdev/context-gtag";
-import getConfig from "next/config";
-
-const {
-  publicRuntimeConfig: { gaTrackingId },
-} = getConfig();
 
 export function createUniformContext(serverContext?: NextPageContext) {
   const plugins: ContextPlugin[] = [
@@ -26,7 +21,7 @@ export function createUniformContext(serverContext?: NextPageContext) {
 
   // If you have GA tracking ID in your .env file - send events to dataLayer
   // @see https://docs.uniform.app/integrations/data/google-analytics
-  if (gaTrackingId) {
+  if (process.env.NEXT_PUBLIC_GA4_ID) {
     plugins.push(enableGoogleGtagAnalytics({ emitAll: true }));
   }
 

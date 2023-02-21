@@ -1,11 +1,8 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import getConfig from "next/config";
 
 export default function Document() {
-  const {
-    publicRuntimeConfig: { gaTrackingId },
-  } = getConfig();
   let tagManagerSrc = "";
+  const gaTrackingId = process.env.NEXT_PUBLIC_GA4_ID;
   if (gaTrackingId) {
     tagManagerSrc = `https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`;
   }
