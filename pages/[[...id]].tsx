@@ -46,7 +46,6 @@ export default MainContainer;
 //
 //   const { composition } = await canvasClient.getCompositionByNodePath({
 //     projectMapNodePath: pathString,
-//     projectMapId: process.env.UNIFORM_PROJECT_MAP_ID!,
 //     state: process.env.NODE_ENV === "development"
 //       ? CANVAS_DRAFT_STATE
 //       : CANVAS_PUBLISHED_STATE,
@@ -71,7 +70,6 @@ export default MainContainer;
 //   });
 //
 //   const res = await canvasClient.getNodes({
-//     projectMapId: process.env.UNIFORM_PROJECT_MAP_ID!,
 //     state: process.env.NODE_ENV === "development"
 //       ? CANVAS_DRAFT_STATE
 //       : CANVAS_PUBLISHED_STATE,
