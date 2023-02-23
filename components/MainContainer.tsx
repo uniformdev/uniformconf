@@ -23,6 +23,8 @@ export default function MainContainer({
   data: composition,
   preview,
 }: MainContainerProps) {
+  // Enables Contextual Editing in Uniform Canvas
+  // @see https://docs.uniform.app/capabilities/composition/contextual-editing
   const contextualEditingEnhancer = createUniformApiEnhancer({
     apiUrl: "/api/preview",
   });

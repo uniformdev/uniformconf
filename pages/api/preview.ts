@@ -1,5 +1,4 @@
 import { GetStaticPropsContext } from "next";
-import getConfig from "next/config";
 import { createPreviewHandler } from "@uniformdev/canvas-next";
 import runEnhancers from "@/lib/enhancers";
 
@@ -8,7 +7,7 @@ const context: GetStaticPropsContext = {
 };
 
 const handler = createPreviewHandler({
-  secret: () => getConfig().serverRuntimeConfig.previewSecret,
+  secret: () => process.env.UNIFORM_PREVIEW_SECRET || 'uniformconf',
   enhance: (composition) => runEnhancers(composition, context),
 });
 

@@ -34,7 +34,7 @@ defaults:
         parameters: {}
 slugSettings:
   unique: global
-  required: 'yes'
+  required: 'disabled'
   regularExpression: ''
   regularExpressionMessage: ''
 titleParameter: ''

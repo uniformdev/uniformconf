@@ -1,7 +1,7 @@
 import {
   withUniformGetStaticProps,
   withUniformGetStaticPaths,
-} from "@uniformdev/canvas-next/slug";
+} from "@uniformdev/canvas-next/project-map";
 import MainContainer from "@/components/MainContainer";
 import runEnhancers from "@/lib/enhancers";
 
@@ -32,26 +32,20 @@ export const getStaticPaths = withUniformGetStaticPaths({
 export default MainContainer;
 
 // ===========================================================================
-// Low- level implementation of getStaticProps without the canvas-next helpers
+// Low-level implementation of getStaticProps without the canvas-next helpers
 // ===========================================================================
-// const getStaticProps = async (context: GetStaticPropsContext) => {
+// export const getStaticProps = async (context: GetStaticPropsContext) => {
 //   const canvasClient = new CanvasClient({
 //     apiKey: process.env.UNIFORM_API_KEY,
 //     apiHost: process.env.UNIFORM_CLI_BASE_URL,
 //     projectId: process.env.UNIFORM_PROJECT_ID,
 //   });
 //
-//   const slug = context?.params?.id;
+//   const pathString = `/${context?.params?.id ?? ''}`;
 //   const { preview } = context;
-//   const slugString = Array.isArray(slug) ? slug.join("/") : slug;
-//   const slashedSlug = !slugString
-//     ? "/"
-//     : slugString.startsWith("/")
-//       ? slugString
-//       : `/${slugString}`;
 //
-//   const { composition } = await canvasClient.getCompositionBySlug({
-//     slug,
+//   const { composition } = await canvasClient.getCompositionByNodePath({
+//     projectMapNodePath: pathString,
 //     state: process.env.NODE_ENV === "development"
 //       ? CANVAS_DRAFT_STATE
 //       : CANVAS_PUBLISHED_STATE,
@@ -59,36 +53,29 @@ export default MainContainer;
 //
 //   return {
 //     props: {
-//       composition,
+//       data: composition,
 //       preview: Boolean(preview),
 //     },
 //   };
 // }
 
-
 // ===========================================================================
-// Low- level implementation of getStaticPaths without the canvas-next helpers
+// Low-level implementation of getStaticPaths without the canvas-next helpers
 // ===========================================================================
-// const getStaticPaths = async () => {
-//   const canvasClient = new CanvasClient({
+// export const getStaticPaths = async () => {
+//   const canvasClient = new ProjectMapClient({
 //     apiKey: process.env.UNIFORM_API_KEY,
 //     apiHost: process.env.UNIFORM_CLI_BASE_URL,
 //     projectId: process.env.UNIFORM_PROJECT_ID,
 //   });
 //
-//   const pages = await canvasClient.getCompositionList({
-//     skipEnhance: true,
+//   const res = await canvasClient.getNodes({
 //     state: process.env.NODE_ENV === "development"
 //       ? CANVAS_DRAFT_STATE
 //       : CANVAS_PUBLISHED_STATE,
 //   });
 //
-//   const paths = pages.compositions
-//     .filter((c) => c.composition._slug)
-//     .map((c) =>
-//       c.composition._slug?.startsWith("/")
-//         ? `${c.composition._slug}`
-//         : `/${c.composition._slug}`
-//     );
+//   const paths = res.nodes?.map((node) => node.path);
+//
 //   return { paths, fallback: true };
 // }
