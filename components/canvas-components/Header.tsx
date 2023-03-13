@@ -63,7 +63,7 @@ const Header = () => {
       }
     >
       {showUniformDeployedBanner && <div className="deployed-preview-banner bg-red-700 w-full mx-auto py-2 flex justify-center">
-        <p>This is Uniform deployed Preview. <a className="underline cursor-pointer" href="https://docs.uniform.app/tutorials/intro-to-canvas/setup-dev-env">Click here to learn how switch to your own!</a></p>
+        <p>This is Uniform deployed Preview. <a className="underline cursor-pointer" href="https://docs.uniform.app/getting-started/starters">Click here to learn how switch to your own!</a></p>
       </div>}
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center">
