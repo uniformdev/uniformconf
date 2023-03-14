@@ -16,15 +16,16 @@ export const UniformDeployedPreviewBanner = () => {
 
     if (isOpenedByInContextEditor && process.env.NEXT_PUBLIC_SHOW_DEPLOYED_BANNER) {
       setVisible(true);
+      document.body.classList.add('mt-[40px]');
     }
   }, []);
 
   return isVisible ? (
-    <div className="deployed-preview-banner bg-red-700 w-full mx-auto py-2 flex justify-center">
+    <div className="fixed deployed-preview-banner bg-red-700 w-full mx-auto py-2 flex justify-center mt-[-40px]">
       <p>
         This is a Uniform-deploy preview.{" "}
         <a
-          className="underline cursor-pointer"
+          className="underline cursor-pointer uniform-allow-click"
           target="_blank"
           href="https://docs.uniform.app/getting-started/starters"
         >

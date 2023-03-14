@@ -7,7 +7,6 @@ import { useUniformContext } from "@uniformdev/context-react";
 
 import NavMenu from "../atoms/NavMenu";
 import Logo from "../atoms/Logo";
-import { UniformDeployedPreviewBanner } from "@/components/atoms/UniformDeployedPreviewBanner";
 
 const HamburgerIcon = () => (
   <svg
@@ -52,11 +51,10 @@ const Header = () => {
       id="header"
       className={
         isScrolled
-          ? "fixed w-full z-30 top-0 text-white  bg-white shadow"
-          : "fixed w-full z-30 top-0 text-white"
+          ? "fixed w-full z-30 text-white  bg-white shadow"
+          : "fixed w-full z-30 text-white"
       }
     >
-      <UniformDeployedPreviewBanner />
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center">
           <Link

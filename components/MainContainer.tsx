@@ -9,6 +9,8 @@ import {
 } from "@uniformdev/canvas-react";
 
 import "./canvas-components";
+import { UniformDeployedPreviewBanner } from "@/components/atoms/UniformDeployedPreviewBanner";
+import React from "react";
 
 const PreviewDevPanel = dynamic(
   () => import("lib/preview/PreviewDevPanel/PreviewDevPanel")
@@ -37,6 +39,7 @@ export default function MainContainer({
         <meta name="description" content="UniformConf"></meta>
       </Head>
       <div>
+        <UniformDeployedPreviewBanner />
         <UniformComposition
           data={composition}
           contextualEditingEnhancer={contextualEditingEnhancer}
