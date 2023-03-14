@@ -3,11 +3,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useScrollPosition from "@react-hook/window-scroll";
 import { registerUniformComponent } from "@uniformdev/canvas-react";
-import { IN_CONTEXT_EDITOR_QUERY_STRING_PARAM } from "@uniformdev/canvas";
 import { useUniformContext } from "@uniformdev/context-react";
 
 import NavMenu from "../atoms/NavMenu";
 import Logo from "../atoms/Logo";
+import { UniformDeployedPreviewBanner } from "@/components/atoms/UniformDeployedPreviewBanner";
 
 const HamburgerIcon = () => (
   <svg
@@ -47,12 +47,6 @@ const Header = () => {
     setScrolled(scrollPositionY > 0);
   }, [scrollPositionY]);
 
-  const isOpenedByInContextEditor = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has(
-    IN_CONTEXT_EDITOR_QUERY_STRING_PARAM
-  );
-
-  const showUniformDeployedBanner = Boolean(isOpenedByInContextEditor && process.env.NEXT_PUBLIC_SHOW_DEPLOYED_BANNER);
-
   return (
     <nav
       id="header"
@@ -62,9 +56,7 @@ const Header = () => {
           : "fixed w-full z-30 top-0 text-white"
       }
     >
-      {showUniformDeployedBanner && <div className="deployed-preview-banner bg-red-700 w-full mx-auto py-2 flex justify-center">
-        <p>This is Uniform deployed Preview. <a className="underline cursor-pointer" href="https://docs.uniform.app/getting-started/starters">Click here to learn how switch to your own!</a></p>
-      </div>}
+      <UniformDeployedPreviewBanner />
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center">
           <Link
