@@ -12,7 +12,7 @@
     "context:manifest": "uniform context manifest download --output ./lib/context/manifest.json",
     "ci:build": "npm run build",
     "uniform:pull": "run-s uniform:pull:canvas uniform:pull:context",
-    "uniform:push": "run-s uniform:push:components uniform:push:context uniform:push:compositions uniform:publish",
+    "uniform:push": "run-s uniform:push:components uniform:push:context uniform:push:compositions uniform:push:project-map uniform:publish ",
     "uniform:pull:canvas": "run-s uniform:pull:components uniform:pull:compositions",
     "uniform:pull:compositions": "uniform presentation composition pull ./data/uniformconf.json",
     "uniform:pull:components": "uniform presentation component pull ./data/uniformconf.json",
