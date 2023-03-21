@@ -32,7 +32,7 @@
     "uniform:pull:project-map:nodes": "uniform project-map node pull ./data/uniformconf.json",
     "uniform:pull:project-map": "run-s uniform:pull:project-map:definitions uniform:pull:project-map:nodes",
     "uniform:push:compositions": "uniform presentation composition push ./data/uniformconf.json",
-    "uniform:push:compositions:publish": "uniform canvas composition publish --all",
+    "uniform:publish": "uniform canvas composition publish --all",
     "uniform:push:components": "uniform presentation component push ./data/uniformconf.json",
     "uniform:push:project-map:definitions": "uniform project-map definition push ./data/uniformconf.json",
     "uniform:push:project-map:nodes": "uniform project-map node push ./data/uniformconf.json",
