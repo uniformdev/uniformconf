@@ -1,9 +1,0 @@
-id: footer
-name: Footer
-icon: border-bottom
-parameters: []
-slots: []
-titleParameter: null
-canBeComposition: false
-created: '2022-03-09T01:57:44.563245+00:00'
-updated: '2022-03-09T01:57:44.563245+00:00'
