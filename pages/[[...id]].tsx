@@ -11,11 +11,8 @@ export const getStaticProps = withUniformGetStaticProps({
   callback: async (context, composition) => {
     if (composition) {
       await runEnhancers(composition, context);
-    } else {
-      return {
-        notFound: true,
-      };
     }
+
     return {
       // Enhanced composition data will be injected later, so no need to do it yourself
       props: {},
