@@ -5,6 +5,7 @@ import { useUniformContext } from "@uniformdev/context-react";
 import {
   registerUniformComponent,
   ComponentProps,
+  UniformText,
 } from "@uniformdev/canvas-react";
 import Splitter from "../atoms/Splitter";
 
@@ -24,11 +25,7 @@ export type RegisterProps = ComponentProps<{
   buttonText: string;
 }>;
 
-export function RegisterForm({
-  heading,
-  registeredText,
-  buttonText,
-}: RegisterProps) {
+export function RegisterForm({}: RegisterProps) {
   const [registered, setRegistered] = useState(
     typeof document !== "undefined"
       ? !!document.cookie.match(/unfrmconf_registered/)
@@ -59,15 +56,20 @@ export function RegisterForm({
                 }}
               />
             ) : (
-              <h1
+              <UniformText
+                as="h1"
+                parameterId="heading"
                 className="my-4 text-5xl font-bold leading-tight"
-                dangerouslySetInnerHTML={{ __html: heading }}
               />
             )}
             <form>
               {registered ? (
                 <>
-                  <p className="pb-16">{registeredText}</p>
+                  <UniformText
+                    as="p"
+                    parameterId="registeredText"
+                    className="pb-16"
+                  />
                   <Link
                     href="/"
                     className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
@@ -81,7 +83,7 @@ export function RegisterForm({
                   onClick={onRegister}
                   className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
                 >
-                  {buttonText}
+                  <UniformText parameterId="buttonText" />
                 </button>
               )}
             </form>

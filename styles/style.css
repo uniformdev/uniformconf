@@ -9,3 +9,11 @@ body {
 .gradient {
   background: linear-gradient(90deg, #1d3557 0%, #7ad7da 100%);
 }
+
+.highlighted {
+  font-size: bold;
+  background: -webkit-linear-gradient(45deg, #00aaff, #a5c1ff, #adaeff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #b2ddff;
+}

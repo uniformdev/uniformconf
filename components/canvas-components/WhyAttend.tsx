@@ -2,6 +2,7 @@ import React from "react";
 import {
   registerUniformComponent,
   ComponentProps,
+  UniformText,
 } from "@uniformdev/canvas-react";
 
 export const WhyAttendLoading = () => {
@@ -19,12 +20,7 @@ export type WhyAttendProps = ComponentProps<{
   image: string;
 }>;
 
-export const WhyAttend = ({
-  title,
-  text,
-  image,
-  component,
-}: WhyAttendProps) => (
+export const WhyAttend = ({ image, component }: WhyAttendProps) => (
   <section className="bg-white border-b py-8">
     <div
       className="container mx-auto flex flex-wrap pt-4 pb-12"
@@ -37,7 +33,7 @@ export const WhyAttend = ({
         <div className="w-1/2">
           <img
             src={image}
-            alt={title}
+            alt="Conference audience"
             width={400}
             height={400}
             loading="lazy"
@@ -47,14 +43,17 @@ export const WhyAttend = ({
       ) : null}
       <div className="w-1/2">
         <div className="p-10">
-          <h2
+          <UniformText
+            as="h2"
+            parameterId="title"
             className="w-full my-2 text-4xl font-bold leading-tight text-center text-gray-800"
-            dangerouslySetInnerHTML={{ __html: title }}
           />
           <hr />
-          <p
+          <UniformText
+            as="p"
+            parameterId="text"
+            isMultiline
             className="text-gray-800 p-10 whitespace-pre-line"
-            dangerouslySetInnerHTML={{ __html: text }}
           />
         </div>
       </div>
@@ -64,12 +63,12 @@ export const WhyAttend = ({
 
 registerUniformComponent({
   type: "whyattend",
-  variantId: 'whyattendleft',
+  variantId: "whyattendleft",
   component: WhyAttend,
 });
 
 registerUniformComponent({
   type: "whyattend",
-  variantId: 'whyattendright',
+  variantId: "whyattendright",
   component: WhyAttend,
 });
