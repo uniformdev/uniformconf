@@ -1,6 +1,7 @@
 import {
   registerUniformComponent,
   ComponentProps,
+  UniformText,
 } from "@uniformdev/canvas-react";
 
 export type TalkProps = ComponentProps<{
@@ -17,18 +18,17 @@ export const Talk = ({ title, description, audience }: TalkProps) => (
       </div>
     </div>
     <a href="#" className="flex flex-wrap no-underline hover:no-underline">
-      <div
+      <UniformText
+        as="div"
+        parameterId="title"
         className="w-full font-bold text-xl text-gray-800 px-6"
-        dangerouslySetInnerHTML={{
-          __html: title,
-        }}
       />
     </a>
-    <div
+    <UniformText
+      as="div"
+      parameterId="description"
+      isMultiline
       className="text-gray-800 px-6 pb-6 text-sm"
-      dangerouslySetInnerHTML={{
-        __html: description,
-      }}
     />
   </div>
 );

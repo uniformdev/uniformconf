@@ -2,8 +2,20 @@ import Link from "next/link";
 import {
   registerUniformComponent,
   ComponentProps,
+  UniformText,
 } from "@uniformdev/canvas-react";
 import Splitter from "../atoms/Splitter";
+
+const highlightUniform = (value = "") => (
+  <span
+    dangerouslySetInnerHTML={{
+      __html: value.replace(
+        "Uniform",
+        '<span class="highlighted">Uniform</span>'
+      ),
+    }}
+  />
+);
 
 type HeroProps = ComponentProps<{
   title: string;
@@ -28,18 +40,23 @@ export function Hero({
             <p className="uppercase tracking-loose w-full">
               This is Uniform demo
             </p>
-            <h1
+            <UniformText
+              as="h1"
+              parameterId="title"
               className="my-4 text-5xl font-bold leading-tight"
-              dangerouslySetInnerHTML={{ __html: title }}
+              render={highlightUniform}
             />
-            <p
+            <UniformText
+              as="p"
+              parameterId="text"
+              isMultiline
               className="leading-normal text-2xl mb-8"
-              dangerouslySetInnerHTML={{ __html: text }}
             />
+
             {buttonText ? (
               <Link prefetch={false} href={buttonLink ? buttonLink : "#"}>
                 <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">
-                  {buttonText}
+                  <UniformText parameterId="buttonText" />
                 </button>
               </Link>
             ) : null}

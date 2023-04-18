@@ -3,20 +3,22 @@ import {
   registerUniformComponent,
   ComponentProps,
   UniformSlot,
+  UniformText,
 } from "@uniformdev/canvas-react";
 
 export type TalkListProps = ComponentProps<{
   title: string;
 }>;
 
-function TalkList({ title }: TalkListProps) {
+function TalkList({}: TalkListProps) {
   return (
     <fieldset>
       <section className="bg-white border-b py-8">
         <div className="container mx-auto flex flex-wrap pt-4 pb-12">
-          <h1
+          <UniformText
+            as="h1"
+            parameterId="title"
             className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800"
-            dangerouslySetInnerHTML={{ __html: title }}
           />
           <UniformSlot name="talks">
             {({ child, key }) => (
