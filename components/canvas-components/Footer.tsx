@@ -1,13 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { registerUniformComponent } from "@uniformdev/canvas-react";
-import { ToggleEmbeddedContextDevTools } from "@uniformdev/context-devtools";
-import getConfig from "next/config";
-
 import Logo from "../atoms/Logo";
-
-const { serverRuntimeConfig } = getConfig();
-const { projectId, apiKey, apiHost } = serverRuntimeConfig;
+import { registerUniformComponent } from "@uniformdev/canvas-react";
 
 const Footer = () => {
   return (
@@ -29,13 +23,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      <ToggleEmbeddedContextDevTools
-        initialSettings={{
-          apiHost: apiHost,
-          apiKey: apiKey,
-          projectId: projectId,
-        }}
-      />
     </footer>
   );
 };

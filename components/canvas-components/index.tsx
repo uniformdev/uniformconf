@@ -5,3 +5,4 @@ import "./WhyAttend";
 import "./Talk";
 import "./TalkList";
 import "./RegisterForm";
+import "./Page";

@@ -27,6 +27,9 @@
       "enr": {
         "1": {
           "cap": 100
+        },
+        "int": {
+          "cap": 100
         }
       },
       "sig": {
@@ -50,10 +53,68 @@
             ]
           }
         },
+        "visitedDevelopers": {
+          "str": 50,
+          "cap": 100,
+          "dur": "p",
+          "crit": {
+            "op": "&",
+            "type": "G",
+            "clauses": [
+              {
+                "path": {
+                  "cs": false,
+                  "op": "~",
+                  "rhs": "developers"
+                },
+                "type": "PV"
+              }
+            ]
+          }
+        },
+        "visitedSupport": {
+          "str": 10,
+          "cap": 100,
+          "dur": "s",
+          "crit": {
+            "op": "&",
+            "type": "G",
+            "clauses": [
+              {
+                "path": {
+                  "cs": false,
+                  "op": "~",
+                  "rhs": "support"
+                },
+                "type": "PV"
+              }
+            ]
+          }
+        },
+        "developers": {
+          "str": 50,
+          "cap": 100,
+          "dur": "s",
+          "crit": {
+            "op": "&",
+            "type": "G",
+            "clauses": [
+              {
+                "type": "QS",
+                "match": {
+                  "cs": false,
+                  "op": "=",
+                  "rhs": "developers"
+                },
+                "queryName": "utm_audience"
+              }
+            ]
+          }
+        },
         "registrationComplete": {
           "str": 100,
           "cap": 100,
-          "dur": "p",
+          "dur": "t",
           "crit": {
             "op": "&",
             "type": "G",
