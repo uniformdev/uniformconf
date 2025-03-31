@@ -19,7 +19,7 @@ function TalkList({ title }: TalkListProps) {
             dangerouslySetInnerHTML={{ __html: title }}
           />
           <UniformSlot name="talks">
-            {({ child, key }) => (
+            {({ child, key }: { child: React.ReactNode; key: number }) => (
               <div
                 key={key}
                 className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink"

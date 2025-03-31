@@ -3,6 +3,7 @@ import {
   registerUniformComponent,
   ComponentProps,
   UniformText,
+  useUniformContextualEditingState,
 } from "@uniformdev/canvas-react";
 import Splitter from "../atoms/Splitter";
 
@@ -14,13 +15,9 @@ type HeroProps = ComponentProps<{
   image?: string;
 }>;
 
-export function Hero({
-  title,
-  text,
-  buttonText,
-  image,
-  buttonLink,
-}: HeroProps) {
+export function Hero({ buttonText, image, buttonLink }: HeroProps) {
+  const { previewMode } = useUniformContextualEditingState();
+  const isEditing = previewMode === "editor";
   return (
     <>
       <div className="pt-24">
@@ -33,16 +30,22 @@ export function Hero({
               parameterId="title"
               as="h1"
               className="my-4 text-5xl font-bold leading-tight"
+              placeholder="Enter title"
             />
             <UniformText
               parameterId="text"
               as="p"
               className="leading-normal text-2xl mb-8"
+              placeholder="Enter text"
             />
-            {buttonText ? (
+            {isEditing || buttonText ? (
               <Link prefetch={false} href={buttonLink ? buttonLink : "#"}>
                 <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">
-                  <UniformText parameterId="buttonText" as="span" />
+                  <UniformText
+                    parameterId="buttonText"
+                    as="span"
+                    placeholder="Enter button text"
+                  />
                 </button>
               </Link>
             ) : null}
