@@ -1,0 +1,253 @@
+composition:
+  _name: Home
+  _id: ecf48923-00c6-4d2b-8493-b1e0895d2807
+  _slug: /
+  type: page
+  slots:
+    footer:
+      - _id: 624dd1f8-73c9-4962-90ee-89d9b01865b4
+        type: footer
+    header:
+      - _id: 0b07d7a4-d80a-4f30-bed9-02bb7b92a1f7
+        type: header
+    content:
+      - _id: 2bad7c43-dabc-432c-8a95-2f5614b51397
+        type: $personalization
+        slots:
+          pz:
+            - _id: c1775e92-7e03-4f0b-b96d-25ac10f4860c
+              type: hero
+              parameters:
+                text:
+                  type: text
+                  value: >-
+                    Now check out the conference sessions and add them to your
+                    agenda
+                image:
+                  type: text
+                  value: /images/registration-hero.svg
+                title:
+                  type: text
+                  value: Thank you for joining!
+                $pzCrit:
+                  type: $pzCrit
+                  value:
+                    crit:
+                      - l: registrationComplete
+                        r: 50
+                        op: '>'
+                intentTag:
+                  type: intentTag
+                  value: null
+                buttonText:
+                  type: text
+                  value: See sessions
+            - _id: f54f95c9-85ef-4df8-a678-63c6c6064950
+              type: hero
+              parameters:
+                text:
+                  type: text
+                  value: We can't wait to receive your talk submission!
+                image:
+                  type: text
+                  value: /images/call-for-papers-hero.svg
+                title:
+                  type: text
+                  value: Call for papers open now!
+                $pzCrit:
+                  type: $pzCrit
+                  value:
+                    crit:
+                      - l: submitCallForPapers
+                        r: 50
+                        op: '>='
+                intentTag:
+                  type: intentTag
+                  value: null
+                buttonText:
+                  type: text
+                  value: Submit your talk
+            - _id: 5ac7e150-69e6-41ce-a8ae-36589febad56
+              type: hero
+              parameters:
+                text:
+                  type: text
+                  value: We think you might be interested in this content.
+                image:
+                  type: text
+                  value: /images/developer-hero.svg
+                title:
+                  type: text
+                  value: Hey, developer!
+                $pzCrit:
+                  type: $pzCrit
+                  value:
+                    crit:
+                      - l: 1_dev
+                        r: 50
+                        op: '>='
+                intentTag:
+                  type: intentTag
+                  value: null
+                buttonText:
+                  type: text
+                  value: null
+            - _id: f14b0cd4-d8ce-4a22-aa1b-d55796740850
+              type: hero
+              parameters:
+                text:
+                  type: text
+                  value: >-
+                    We think you may be a marketer. This might be of interest to
+                    you!
+                image:
+                  type: text
+                  value: /images/marketer-hero.svg
+                title:
+                  type: text
+                  value: Howdy, Marketer!
+                $pzCrit:
+                  type: $pzCrit
+                  value:
+                    crit:
+                      - l: 1_mkt
+                        r: 50
+                        op: '>='
+                intentTag:
+                  type: intentTag
+                  value: null
+            - _id: 4410422b-6690-469e-948e-de035e28e5eb
+              type: hero
+              parameters:
+                text:
+                  type: text
+                  value: >-
+                    Whether you are a developer or a marketer, we got great
+                    content for you.
+                image:
+                  type: text
+                  value: /images/default-hero.svg
+                title:
+                  type: text
+                  value: Welcome to UniformConf
+                buttonLink:
+                  type: text
+                  value: /registration
+                buttonText:
+                  type: text
+                  value: Register
+        parameters:
+          trackingEventName:
+            type: text
+            value: Home Hero
+      - _id: c8261d6f-3205-425c-9163-574f4355f187
+        type: $test
+        slots:
+          test:
+            - _id: a3eac857-ecb1-4875-af36-ddfe7fa8096a
+              type: whyattend
+              parameters:
+                text:
+                  type: text
+                  value: variant b
+                image:
+                  type: asset
+                  value:
+                    - _id: 5b93c5e0-2818-41ae-a6b4-3b8285170705
+                      type: image
+                      fields:
+                        id:
+                          type: text
+                          value: 3bd6d7c8-c4d0-4104-9a7f-6030e215cfdf
+                        url:
+                          value: >-
+                            https://img.uniform.global/p/rD7cIYsAS-q4c3tV2jO26A/cGsU-5p4Se2C7UTE5g0pqw-image.png
+                          type: text
+                        file:
+                          type: file
+                          value: dab9432d-5dfd-419e-b9f4-8b211026b525
+                        size:
+                          value: 2790612
+                          type: number
+                        title:
+                          type: text
+                          value: image.png
+                        width:
+                          value: 1740
+                          type: number
+                        height:
+                          value: 1160
+                          type: number
+                        mediaType:
+                          value: image/png
+                          type: text
+                      _source: uniform-assets
+                title:
+                  type: text
+                  value: testing this
+            - _id: cd8d86a9-3714-4d4c-83c1-22669513b1c5
+              type: whyattend
+              variant: whyattendleft
+              parameters:
+                text:
+                  type: text
+                  value: >-
+                    This conference has something to offer developers and
+                    marketers alike. From basics to advanced, learn more about:
+
+
+                    1. Enterprise JAMstack Personalization
+
+                    2. Uniform Personalization
+
+                    3. Uniform DXP
+
+
+                    Expand your knowledge on these subjects and engage with
+                    professionals from all over the world.
+                image:
+                  type: asset
+                  value:
+                    - _id: 4a16d6f3-d153-4e81-92d8-0c976659582b
+                      type: image
+                      fields:
+                        id:
+                          type: text
+                          value: f77f27cc-e55d-43ec-bf0e-81bc013558d1
+                        url:
+                          value: >-
+                            https://img.uniform.global/p/rD7cIYsAS-q4c3tV2jO26A/0dlyjZxMQMaRNOZ7Gk0gGA-image.png
+                          type: text
+                        file:
+                          type: file
+                          value: be4b06f8-4fc9-4755-8715-78c2e0478966
+                        size:
+                          value: 1419275
+                          type: number
+                        title:
+                          type: text
+                          value: image.png
+                        width:
+                          value: 1740
+                          type: number
+                        height:
+                          value: 1160
+                          type: number
+                        mediaType:
+                          value: image/png
+                          type: text
+                      _source: uniform-assets
+                title:
+                  type: text
+                  value: Why You Should Attend
+                $tstVrnt:
+                  type: testVariant
+                  value:
+                    id: variant a
+        parameters:
+          test:
+            type: testSelect
+            value: newTestForDemo
+created: '2023-02-16T15:12:07.542544+00:00'
+modified: '2025-02-11T03:53:58.355588+00:00'
+pattern: false
