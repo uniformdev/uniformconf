@@ -28,7 +28,7 @@
     "@uniformdev/project-map": "20.9.0",
     "analytics": "^0.8.1",
     "cookie": "^0.5.0",
-    "next": "^15.2.4",
+    "next": "15.2.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
